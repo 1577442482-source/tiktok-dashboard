@@ -16,12 +16,12 @@ export default function PeriodCard({ period, summary, onClick }: PeriodCardProps
 
   return (
     <div
-      className="bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition-shadow cursor-pointer"
+      className="glass-card rounded-xl p-5 hover:shadow-md transition-shadow cursor-pointer"
       onClick={onClick}
     >
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-lg font-semibold text-slate-900">
+          <h3 className="text-lg font-semibold text-white">
             {formatDateLabel(period.analysisStart, period.analysisEnd)}
           </h3>
           <p className="text-sm text-slate-400 mt-0.5">
@@ -41,8 +41,8 @@ export default function PeriodCard({ period, summary, onClick }: PeriodCardProps
           return (
             <div key={m.key}>
               <div className="text-sm text-slate-400">{m.label}</div>
-              <div className="font-semibold text-slate-800 text-base mt-0.5">{m.format(val)}</div>
-              <div className={`text-sm ${isUp ? 'text-emerald-600' : isDown ? 'text-red-500' : 'text-slate-400'}`}>
+              <div className="font-semibold text-slate-200 text-base mt-0.5">{m.format(val)}</div>
+              <div className={`text-sm ${isUp ? 'text-emerald-400' : isDown ? 'text-red-400' : 'text-slate-400'}`}>
                 {isUp ? '↑' : isDown ? '↓' : ''}{formatPercent(change)}
               </div>
             </div>
@@ -51,7 +51,7 @@ export default function PeriodCard({ period, summary, onClick }: PeriodCardProps
       </div>
 
       {summary && (
-        <p className="mt-4 pt-4 border-t border-slate-100 text-base text-slate-500 line-clamp-2">
+        <p className="mt-4 pt-4 border-t border-white/5 text-base text-slate-400 line-clamp-2">
           {summary}
         </p>
       )}

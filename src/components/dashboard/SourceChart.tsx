@@ -8,7 +8,7 @@ interface SourceChartProps {
   period: DataPeriod;
 }
 
-const COLORS = ['#6366f1', '#10b981', '#f59e0b'];
+const COLORS = ['#10b981', '#10b981', '#f59e0b'];
 
 export default function SourceChart({ period }: SourceChartProps) {
   const liveGmv = period.overview.liveAttributedGmv;
@@ -18,8 +18,8 @@ export default function SourceChart({ period }: SourceChartProps) {
 
   if (total === 0) {
     return (
-      <div className="bg-white rounded-xl border border-slate-200 p-5">
-        <h3 className="text-base font-semibold text-slate-700 mb-4">GMV 来源拆解</h3>
+      <div className="glass-card rounded-xl p-5">
+        <h3 className="text-base font-semibold text-slate-400 mb-4">GMV 来源拆解</h3>
         <p className="text-base text-slate-400 text-center py-12">暂无来源数据</p>
       </div>
     );
@@ -32,8 +32,8 @@ export default function SourceChart({ period }: SourceChartProps) {
   ];
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-5">
-      <h3 className="text-sm font-semibold text-slate-700 mb-4">GMV 来源拆解</h3>
+    <div className="glass-card rounded-xl p-5">
+      <h3 className="text-sm font-semibold text-slate-400 mb-4">GMV 来源拆解</h3>
       <ResponsiveContainer width="100%" height={220}>
         <PieChart>
           <Pie

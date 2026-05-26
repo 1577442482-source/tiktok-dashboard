@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Data files (sensitive business data)
+public/_bulk_data.json
+周度数据/

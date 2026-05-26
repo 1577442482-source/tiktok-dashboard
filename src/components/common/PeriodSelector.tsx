@@ -9,7 +9,7 @@ export default function PeriodSelector() {
 
   return (
     <select
-      className="border border-slate-200 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      className="border border-white/5 rounded-lg px-3 py-2 text-sm bg-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
       value={currentPeriodId || ''}
       onChange={(e) => {
         setCurrentPeriod(e.target.value || null);

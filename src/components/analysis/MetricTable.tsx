@@ -32,11 +32,11 @@ export default function MetricTable({ overview, overviewChange, highlightThresho
   return (
     <div className="space-y-4">
       {categories.map((cat) => (
-        <div key={cat.label} className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-          <div className="px-5 py-3 bg-slate-50 border-b border-slate-100">
-            <h3 className="text-base font-semibold text-slate-700">{cat.label}</h3>
+        <div key={cat.label} className="glass-card rounded-xl overflow-hidden">
+          <div className="px-5 py-3 bg-white/5 border-b border-white/5">
+            <h3 className="text-base font-semibold text-slate-400">{cat.label}</h3>
           </div>
-          <div className="divide-y divide-slate-50">
+          <div className="divide-y divide-white/5">
             {cat.metrics.map((m) => {
               const absChange = Math.abs(m.change);
               const isUp = m.change > 0;
@@ -47,20 +47,20 @@ export default function MetricTable({ overview, overviewChange, highlightThresho
                 <div
                   key={m.key}
                   className={`flex items-center justify-between px-5 py-3.5 text-[15px] ${
-                    isHighlight ? 'bg-amber-50/30' : ''
+                    isHighlight ? 'bg-amber-500/10' : ''
                   }`}
                 >
-                  <span className="text-slate-600">{m.label}</span>
+                  <span className="text-slate-400">{m.label}</span>
                   <div className="flex items-center gap-3">
-                    <span className="font-medium text-slate-800">
+                    <span className="font-medium text-slate-200">
                       {formatMetricValue(m.key, m.value)}
                     </span>
                     <span
                       className={`text-sm font-medium px-2 py-0.5 rounded-full ${
-                        isUp && isHighlight ? 'bg-emerald-100 text-emerald-700' :
-                        isDown && isHighlight ? 'bg-red-100 text-red-700' :
-                        isUp ? 'text-emerald-600' :
-                        isDown ? 'text-red-500' :
+                        isUp && isHighlight ? 'bg-emerald-500/20 text-emerald-300' :
+                        isDown && isHighlight ? 'bg-red-500/15 text-red-300' :
+                        isUp ? 'text-emerald-400' :
+                        isDown ? 'text-red-400' :
                         'text-slate-400'
                       }`}
                     >

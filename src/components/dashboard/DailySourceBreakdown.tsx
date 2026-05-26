@@ -18,26 +18,26 @@ export default function DailySourceBreakdown({ dailyData }: DailySourceBreakdown
   }));
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-5">
-      <h3 className="text-base font-semibold text-slate-700 mb-4">GMV 日度来源拆解</h3>
+    <div className="glass-card rounded-xl p-5">
+      <h3 className="text-base font-semibold text-slate-400 mb-4">GMV 日度来源拆解</h3>
       <ResponsiveContainer width="100%" height={280}>
         <AreaChart data={chartData}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
           <XAxis
             dataKey="date"
             tick={{ fontSize: 11 }}
-            stroke="#94a3b8"
+            stroke="#64748b"
             interval={Math.floor(chartData.length / 8)}
           />
-          <YAxis tick={{ fontSize: 11 }} stroke="#94a3b8" />
+          <YAxis tick={{ fontSize: 11 }} stroke="#64748b" />
           <Tooltip formatter={(value: unknown) => [formatCurrency(Number(value)), '']} />
           <Legend />
           <Area
             type="monotone"
             dataKey="商品卡"
             stackId="1"
-            stroke="#6366f1"
-            fill="#6366f1"
+            stroke="#10b981"
+            fill="#10b981"
             fillOpacity={0.6}
           />
           <Area

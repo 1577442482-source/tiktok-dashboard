@@ -37,29 +37,29 @@ export default function WeeklyPattern({ dailyData }: WeeklyPatternProps) {
 
   if (chartData.length === 0) {
     return (
-      <div className="bg-white rounded-xl border border-slate-200 p-5 flex items-center justify-center h-64 text-slate-400">
+      <div className="glass-card rounded-xl p-5 flex items-center justify-center h-64 text-slate-400">
         暂无周期数据
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-5">
-      <h3 className="text-base font-semibold text-slate-700 mb-1">周期内每日销售额</h3>
+    <div className="glass-card rounded-xl p-5">
+      <h3 className="text-base font-semibold text-slate-400 mb-1">周期内每日销售额</h3>
       <p className="text-xs text-slate-400 mb-4">
         {chartData[0]?.date} ~ {chartData[chartData.length - 1]?.date} · {chartData.length}天
       </p>
 
       <ResponsiveContainer width="100%" height={220}>
         <BarChart data={chartData}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
           <XAxis
             dataKey="date"
             tick={{ fontSize: 10 }}
-            stroke="#94a3b8"
+            stroke="#64748b"
             interval={Math.max(0, Math.floor(chartData.length / 10) - 1)}
           />
-          <YAxis tick={{ fontSize: 12 }} stroke="#94a3b8" />
+          <YAxis tick={{ fontSize: 12 }} stroke="#64748b" />
           <Tooltip
             labelFormatter={(label) => `日期: ${label}`}
             formatter={(value: unknown) => [formatCurrency(Number(value)), 'GMV']}
@@ -68,7 +68,7 @@ export default function WeeklyPattern({ dailyData }: WeeklyPatternProps) {
             {chartData.map((entry, idx) => (
               <Cell
                 key={idx}
-                fill={entry.gmv === (bestDay?.gmv || 0) ? '#6366f1' : '#c7d2fe'}
+                fill={entry.gmv === (bestDay?.gmv || 0) ? '#10b981' : '#6ee7b7'}
               />
             ))}
           </Bar>
@@ -76,18 +76,18 @@ export default function WeeklyPattern({ dailyData }: WeeklyPatternProps) {
       </ResponsiveContainer>
 
       <div className="grid grid-cols-3 gap-3 mt-4 text-center">
-        <div className="bg-slate-50 rounded-lg p-2">
+        <div className="bg-white/5 rounded-lg p-2">
           <div className="text-xs text-slate-400">总 GMV</div>
-          <div className="text-sm font-bold text-slate-800">{formatCurrency(totalGmv)}</div>
+          <div className="text-sm font-bold text-slate-200">{formatCurrency(totalGmv)}</div>
         </div>
-        <div className="bg-slate-50 rounded-lg p-2">
+        <div className="bg-white/5 rounded-lg p-2">
           <div className="text-xs text-slate-400">日均 GMV</div>
-          <div className="text-sm font-bold text-slate-800">{formatCurrency(avgGmv)}</div>
+          <div className="text-sm font-bold text-slate-200">{formatCurrency(avgGmv)}</div>
         </div>
-        <div className="bg-indigo-50 rounded-lg p-2">
-          <div className="text-xs text-indigo-400">最高日</div>
-          <div className="text-sm font-bold text-indigo-700">{bestDay?.date || '-'}</div>
-          <div className="text-xs text-indigo-500">{bestDay ? formatCurrency(bestDay.gmv) : ''}</div>
+        <div className="bg-emerald-500/10 rounded-lg p-2">
+          <div className="text-xs text-emerald-400">最高日</div>
+          <div className="text-sm font-bold text-emerald-300">{bestDay?.date || '-'}</div>
+          <div className="text-xs text-emerald-500">{bestDay ? formatCurrency(bestDay.gmv) : ''}</div>
         </div>
       </div>
     </div>

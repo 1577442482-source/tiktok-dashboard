@@ -14,33 +14,33 @@ export default function TrackingTable() {
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-slate-100">
-            <th className="text-left px-4 py-3 font-medium text-slate-500">达人</th>
-            <th className="text-left px-4 py-3 font-medium text-slate-500">样品</th>
-            <th className="text-left px-4 py-3 font-medium text-slate-500">快递单号</th>
-            <th className="text-left px-4 py-3 font-medium text-slate-500">快递公司</th>
-            <th className="text-left px-4 py-3 font-medium text-slate-500">状态</th>
-            <th className="text-left px-4 py-3 font-medium text-slate-500">更新时间</th>
-            <th className="text-right px-4 py-3 font-medium text-slate-500">操作</th>
+          <tr className="border-b border-white/5">
+            <th className="text-left px-4 py-3 font-medium text-slate-400">达人</th>
+            <th className="text-left px-4 py-3 font-medium text-slate-400">样品</th>
+            <th className="text-left px-4 py-3 font-medium text-slate-400">快递单号</th>
+            <th className="text-left px-4 py-3 font-medium text-slate-400">快递公司</th>
+            <th className="text-left px-4 py-3 font-medium text-slate-400">状态</th>
+            <th className="text-left px-4 py-3 font-medium text-slate-400">更新时间</th>
+            <th className="text-right px-4 py-3 font-medium text-slate-400">操作</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-slate-50">
+        <tbody className="divide-y divide-white/5">
           {sorted.map(s => (
-            <tr key={s.id} className="hover:bg-slate-50/50">
-              <td className="px-4 py-3 font-medium text-slate-800">{s.influencerName}</td>
-              <td className="px-4 py-3 text-slate-600">{s.productName || '-'}</td>
-              <td className="px-4 py-3 text-slate-700 font-mono text-xs">
+            <tr key={s.id} className="hover:bg-white/[0.03]">
+              <td className="px-4 py-3 font-medium text-slate-200">{s.influencerName}</td>
+              <td className="px-4 py-3 text-slate-400">{s.productName || '-'}</td>
+              <td className="px-4 py-3 text-slate-400 font-mono text-xs">
                 {s.trackingNumber}
                 <a
                   href={`https://t.17track.net/en#nums=${s.trackingNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="ml-2 text-indigo-500 hover:text-indigo-700 text-xs"
+                  className="ml-2 text-emerald-500 hover:text-emerald-300 text-xs"
                 >
                   查询 →
                 </a>
               </td>
-              <td className="px-4 py-3 text-slate-500">{s.carrierName}</td>
+              <td className="px-4 py-3 text-slate-400">{s.carrierName}</td>
               <td className="px-4 py-3">
                 <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${TRACKING_COLORS[s.status]}`}>
                   {TRACKING_LABELS[s.status]}
@@ -54,21 +54,21 @@ export default function TrackingTable() {
                 <button
                   onClick={() => refreshShipmentStatus(s.id)}
                   disabled={loading}
-                  className="text-xs text-indigo-600 hover:text-indigo-800 px-2 py-1 disabled:opacity-50"
+                  className="text-xs text-emerald-400 hover:text-emerald-300 px-2 py-1 disabled:opacity-50"
                 >
                   刷新
                 </button>
                 {s.status === 'delivered' && !s.acknowledged && (
                   <button
                     onClick={() => updateShipment({ ...s, acknowledged: true })}
-                    className="text-xs text-emerald-600 hover:text-emerald-800 px-2 py-1"
+                    className="text-xs text-emerald-400 hover:text-emerald-200 px-2 py-1"
                   >
                     已处理
                   </button>
                 )}
                 <button
                   onClick={() => removeShipment(s.id)}
-                  className="text-xs text-red-500 hover:text-red-700 px-2 py-1"
+                  className="text-xs text-red-500 hover:text-red-300 px-2 py-1"
                 >
                   删除
                 </button>

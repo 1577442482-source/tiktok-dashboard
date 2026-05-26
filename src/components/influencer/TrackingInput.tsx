@@ -109,21 +109,21 @@ export default function TrackingInput({ onClose }: Props) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={onClose}>
       <div
-        className="bg-white rounded-2xl shadow-xl w-full max-w-md mx-4"
+        className="glass-card rounded-2xl shadow-xl w-full max-w-md mx-4"
         onClick={e => e.stopPropagation()}
       >
-        <div className="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
-          <h3 className="text-lg font-bold text-slate-800">录入物流单号</h3>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 text-xl leading-none">&times;</button>
+        <div className="px-6 py-5 border-b border-white/5 flex items-center justify-between">
+          <h3 className="text-lg font-bold text-slate-200">录入物流单号</h3>
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-400 text-xl leading-none">&times;</button>
         </div>
 
         <div className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-600 mb-1">选择达人 *</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1">选择达人 *</label>
             <select
               value={influencerId}
               onChange={e => setInfluencerId(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             >
               <option value="">-- 请选择 --</option>
               {influencers.map(inf => (
@@ -133,50 +133,50 @@ export default function TrackingInput({ onClose }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-600 mb-1">样品名称</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1">样品名称</label>
             <input
               value={productName}
               onChange={e => setProductName(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               placeholder="如：美妆样品包"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-600 mb-1">快递单号 *</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1">快递单号 *</label>
             <input
               value={trackingNumber}
               onChange={e => handleTrackingChange(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               placeholder="输入单号自动识别快递公司"
             />
             {detectLabel && (
-              <p className={`text-xs mt-1 ${autoDetected ? 'text-emerald-600' : 'text-amber-600'}`}>
-                {autoDetected ? '✅ ' : '⚠️ '}{detectLabel}{autoDetected ? '' : '，请手动选择'}
+              <p className={`text-xs mt-1 ${autoDetected ? 'text-emerald-400' : 'text-amber-400'}`}>
+                {detectLabel}{autoDetected ? '' : '，请手动选择'}
               </p>
             )}
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-600 mb-1">快递公司</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1">快递公司</label>
             <select
               value={carrier}
               onChange={e => { setCarrier(e.target.value); setAutoDetected(false); }}
-              className={`w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 transition-colors ${autoDetected ? 'border-emerald-300 bg-emerald-50' : 'border-slate-200'}`}
+              className={`w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-colors ${autoDetected ? 'border-emerald-300 bg-emerald-500/10' : 'border-white/5'}`}
             >
               {CARRIERS.map(c => (
                 <option key={c.code} value={c.code}>{c.name}</option>
               ))}
             </select>
             {autoDetected && (
-              <p className="text-xs text-emerald-600 mt-1">已自动匹配，可手动修改</p>
+              <p className="text-xs text-emerald-400 mt-1">已自动匹配，可手动修改</p>
             )}
           </div>
         </div>
 
-        <div className="px-6 py-4 border-t border-slate-100 flex justify-end gap-3">
-          <button onClick={onClose} className="px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg">取消</button>
-          <button onClick={handleSubmit} className="px-6 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg">录入并跟踪</button>
+        <div className="px-6 py-4 border-t border-white/5 flex justify-end gap-3">
+          <button onClick={onClose} className="px-4 py-2 text-sm font-medium text-slate-400 hover:bg-white/5 rounded-lg">取消</button>
+          <button onClick={handleSubmit} className="px-6 py-2 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg">录入并跟踪</button>
         </div>
       </div>
     </div>

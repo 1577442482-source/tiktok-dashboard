@@ -9,19 +9,19 @@ interface DailyHeatmapProps {
 const DAY_HEADERS = ['日', '一', '二', '三', '四', '五', '六'];
 
 function getIntensity(date: string, gmvMap: Record<string, number>, maxGmv: number): string {
-  if (!date) return 'bg-slate-50';
+  if (!date) return 'bg-white/5';
   const gmv = gmvMap[date] || 0;
-  if (gmv === 0) return 'bg-slate-100 border border-slate-200';
+  if (gmv === 0) return 'bg-white/5 border border-white/5';
   const ratio = gmv / maxGmv;
   if (ratio >= 0.75) return 'bg-indigo-500 border border-indigo-400';
   if (ratio >= 0.5) return 'bg-indigo-400 border border-indigo-300';
-  if (ratio >= 0.25) return 'bg-indigo-300 border border-indigo-200';
-  return 'bg-indigo-200 border border-indigo-100';
+  if (ratio >= 0.25) return 'bg-indigo-300 border border-indigo-500/20';
+  return 'bg-indigo-200 border border-indigo-500/20';
 }
 
 function getTextClass(date: string, gmvMap: Record<string, number>, maxGmv: number): string {
   if (!date || (gmvMap[date] || 0) === 0) return 'text-slate-400';
-  return (gmvMap[date] || 0) / maxGmv > 0.5 ? 'text-white' : 'text-slate-700';
+  return (gmvMap[date] || 0) / maxGmv > 0.5 ? 'text-white' : 'text-slate-400';
 }
 
 function buildMonthGrid(year: number, month: number): string[][] {
@@ -83,15 +83,15 @@ export default function DailyHeatmap({ dailyData }: DailyHeatmapProps) {
 
   if (dailyData.length === 0) {
     return (
-      <div className="bg-white rounded-xl border border-slate-200 p-5 flex items-center justify-center h-64 text-slate-400">
+      <div className="glass-card rounded-xl p-5 flex items-center justify-center h-64 text-slate-400">
         暂无周期数据
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-5">
-      <h3 className="text-base font-semibold text-slate-700 mb-1">周期内每日销售热力图</h3>
+    <div className="glass-card rounded-xl p-5">
+      <h3 className="text-base font-semibold text-slate-400 mb-1">周期内每日销售热力图</h3>
       <p className="text-xs text-slate-400 mb-4">
         {dateStart} ~ {dateEnd} · {dailyData.length}天
       </p>
@@ -99,7 +99,7 @@ export default function DailyHeatmap({ dailyData }: DailyHeatmapProps) {
       <div className="space-y-4">
         {months.map(({ label, weeks }) => (
           <div key={label}>
-            <div className="text-xs font-medium text-slate-500 mb-2">{label}</div>
+            <div className="text-xs font-medium text-slate-400 mb-2">{label}</div>
             <div className="space-y-1">
               <div className="grid grid-cols-7 gap-1 mb-1">
                 {DAY_HEADERS.map(d => (
@@ -119,7 +119,7 @@ export default function DailyHeatmap({ dailyData }: DailyHeatmapProps) {
                           {new Date(date).getDate()}
                         </span>
                       ) : (
-                        <span className="text-slate-300" />
+                        <span className="text-slate-400" />
                       )}
                     </div>
                   ))}
@@ -132,7 +132,7 @@ export default function DailyHeatmap({ dailyData }: DailyHeatmapProps) {
 
       <div className="flex items-center justify-end gap-1.5 mt-4 text-xs text-slate-400">
         <span>低</span>
-        <div className="w-3 h-3 rounded-sm bg-slate-100 border border-slate-200" />
+        <div className="w-3 h-3 rounded-sm bg-white/5 border border-white/5" />
         <div className="w-3 h-3 rounded-sm bg-indigo-200" />
         <div className="w-3 h-3 rounded-sm bg-indigo-300" />
         <div className="w-3 h-3 rounded-sm bg-indigo-400" />

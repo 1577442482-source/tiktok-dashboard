@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { AlertTriangle, CheckCircle, ShieldAlert, Info } from 'lucide-react';
 import type { DailyRow } from '../../types';
 import { detectAlerts } from '../../services/alertEngine';
 import { formatCurrency, formatNumber } from '../../utils/formatters';
@@ -10,21 +11,24 @@ interface SmartAlertPanelProps {
 const SEVERITY_CONFIG = {
   critical: {
     label: '严重',
-    badge: 'bg-red-100 text-red-700 border-red-200',
-    card: 'border-l-red-500 bg-red-50/50',
-    icon: '🔴',
+    badge: 'bg-red-500/15 text-red-300 border-red-500/30',
+    card: 'border-l-red-500 bg-red-500/10',
+    Icon: ShieldAlert,
+    iconColor: 'text-red-400',
   },
   warning: {
     label: '警告',
-    badge: 'bg-amber-100 text-amber-700 border-amber-200',
-    card: 'border-l-amber-500 bg-amber-50/50',
-    icon: '🟡',
+    badge: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+    card: 'border-l-amber-500 bg-amber-500/10',
+    Icon: AlertTriangle,
+    iconColor: 'text-amber-400',
   },
   info: {
     label: '提示',
-    badge: 'bg-blue-100 text-blue-700 border-blue-200',
-    card: 'border-l-blue-500 bg-blue-50/50',
-    icon: '🔵',
+    badge: 'bg-blue-500/15 text-blue-300 border-blue-500/30',
+    card: 'border-l-blue-500 bg-blue-500/10',
+    Icon: Info,
+    iconColor: 'text-blue-400',
   },
 } as const;
 
@@ -64,68 +68,79 @@ export default function SmartAlertPanel({ dailyData }: SmartAlertPanelProps) {
 
   if (!expanded) {
     const total = allAlerts.length;
+    const hasAlerts = total > 0;
+    const hasCritical = counts.critical > 0;
+
     return (
       <div
-        className={`rounded-xl border px-4 py-3 flex items-center justify-between cursor-pointer transition-colors ${
-          total > 0
-            ? counts.critical > 0
-              ? 'bg-red-50 border-red-200'
-              : 'bg-amber-50 border-amber-200'
-            : 'bg-emerald-50 border-emerald-200'
+        className={`rounded-xl border px-4 py-3 flex items-center justify-between cursor-pointer transition-all card-hover ${
+          hasAlerts
+            ? hasCritical
+              ? 'bg-red-500/10 border-red-500/20'
+              : 'bg-amber-500/10 border-amber-500/20'
+            : 'bg-emerald-500/10 border-emerald-500/20'
         }`}
         onClick={() => setExpanded(true)}
       >
         <div className="flex items-center gap-3">
-          <span className="text-lg">{total > 0 ? '🚨' : '✅'}</span>
-          <span className="font-semibold text-slate-800">
-            {total > 0 ? `${total} 条预警` : '数据正常'}
+          {hasAlerts ? (
+            <AlertTriangle size={20} strokeWidth={1.75} className={hasCritical ? 'text-red-500' : 'text-amber-500'} />
+          ) : (
+            <CheckCircle size={20} strokeWidth={1.75} className="text-emerald-500" />
+          )}
+          <span className="font-semibold text-slate-200 text-sm">
+            {hasAlerts ? `${total} 条预警` : '数据正常'}
           </span>
-          {total > 0 && (
+          {hasAlerts && (
             <div className="flex gap-1.5 text-xs">
               {counts.critical > 0 && (
-                <span className="px-1.5 py-0.5 rounded bg-red-100 text-red-700 font-medium">
+                <span className="px-1.5 py-0.5 rounded bg-red-500/15 text-red-300 font-medium">
                   {counts.critical}严重
                 </span>
               )}
               {counts.warning > 0 && (
-                <span className="px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 font-medium">
+                <span className="px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-300 font-medium">
                   {counts.warning}警告
                 </span>
               )}
               {counts.info > 0 && (
-                <span className="px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 font-medium">
+                <span className="px-1.5 py-0.5 rounded bg-blue-500/15 text-blue-300 font-medium">
                   {counts.info}提示
                 </span>
               )}
             </div>
           )}
         </div>
-        <span className="text-slate-400 text-sm">展开 ▸</span>
+        <span className="text-slate-400 text-xs">展开 &#9654;</span>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+    <div className="glass-card rounded-xl overflow-hidden card-hover">
       <div
         className={`px-5 py-3.5 flex items-center justify-between cursor-pointer ${
           allAlerts.length > 0
             ? counts.critical > 0
-              ? 'bg-red-50 border-b border-red-100'
-              : 'bg-amber-50 border-b border-amber-100'
-            : 'bg-emerald-50 border-b border-emerald-100'
+              ? 'bg-red-500/10 border-b border-red-500/20'
+              : 'bg-amber-500/10 border-b border-amber-500/20'
+            : 'bg-emerald-500/10 border-b border-emerald-500/20'
         }`}
         onClick={() => setExpanded(false)}
       >
         <div className="flex items-center gap-3">
-          <span className="text-lg">{allAlerts.length > 0 ? '🚨' : '✅'}</span>
+          {allAlerts.length > 0 ? (
+            <AlertTriangle size={20} strokeWidth={1.75} className={counts.critical > 0 ? 'text-red-500' : 'text-amber-500'} />
+          ) : (
+            <CheckCircle size={20} strokeWidth={1.75} className="text-emerald-500" />
+          )}
           <div>
-            <h3 className="font-semibold text-slate-800 text-base">
+            <h3 className="font-semibold text-slate-200 text-sm">
               {allAlerts.length > 0 ? `智能预警 (${allAlerts.length})` : '数据正常 - 未检测到异常'}
             </h3>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-slate-400 mt-0.5">
               {allAlerts.length > 0
-                ? `基于最近3天数据检测，覆盖GMV/CTR/CVR/退款率/客单价`
+                ? '基于最近3天数据检测，覆盖GMV/CTR/CVR/退款率/客单价'
                 : '所有核心指标在正常范围内波动'}
             </p>
           </div>
@@ -134,23 +149,23 @@ export default function SmartAlertPanel({ dailyData }: SmartAlertPanelProps) {
           {allAlerts.length > 0 && (
             <div className="flex gap-1.5 text-xs">
               {counts.critical > 0 && (
-                <span className="px-2 py-0.5 rounded-full bg-red-100 text-red-700 font-semibold">
+                <span className="px-2 py-0.5 rounded-full bg-red-500/15 text-red-300 font-semibold">
                   {counts.critical} 严重
                 </span>
               )}
               {counts.warning > 0 && (
-                <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 font-semibold">
+                <span className="px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 font-semibold">
                   {counts.warning} 警告
                 </span>
               )}
               {counts.info > 0 && (
-                <span className="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 font-semibold">
+                <span className="px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-300 font-semibold">
                   {counts.info} 提示
                 </span>
               )}
             </div>
           )}
-          <span className="text-slate-400 text-sm">收起 ▾</span>
+          <span className="text-slate-400 text-xs">收起 &#9660;</span>
         </div>
       </div>
 
@@ -158,35 +173,36 @@ export default function SmartAlertPanel({ dailyData }: SmartAlertPanelProps) {
         <div className="px-5 py-4 space-y-2.5 max-h-[500px] overflow-y-auto">
           {allAlerts.map((alert) => {
             const cfg = SEVERITY_CONFIG[alert.severity];
+            const Icon = cfg.Icon;
             return (
               <div
                 key={alert.id}
                 className={`border-l-4 rounded-r-lg p-3.5 ${cfg.card}`}
               >
                 <div className="flex items-start gap-3">
-                  <span className="text-base mt-0.5 shrink-0">{cfg.icon}</span>
+                  <Icon size={16} strokeWidth={1.75} className={`mt-0.5 shrink-0 ${cfg.iconColor}`} />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
                       <span className="text-xs font-semibold text-slate-400">{alert.date}</span>
                       <span className={`text-xs px-1.5 py-0.5 rounded border ${cfg.badge}`}>
                         {cfg.label}
                       </span>
-                      <span className="text-xs text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">
+                      <span className="text-xs text-slate-400 bg-white/5 px-1.5 py-0.5 rounded">
                         {METRIC_LABEL[alert.metric] || alert.metric}
                       </span>
                     </div>
-                    <p className="font-semibold text-slate-800 mb-1">{alert.title}</p>
-                    <p className="text-sm text-slate-600 leading-relaxed">{alert.message}</p>
+                    <p className="font-semibold text-slate-200 text-sm mb-1">{alert.title}</p>
+                    <p className="text-sm text-slate-400 leading-relaxed">{alert.message}</p>
                     <div className="flex items-center gap-3 mt-2 text-xs text-slate-400">
                       <span>
-                        当前: <span className="font-semibold text-slate-700">{formatMetricValue(alert.metric, alert.currentValue)}</span>
+                        当前: <span className="font-semibold text-slate-400">{formatMetricValue(alert.metric, alert.currentValue)}</span>
                       </span>
                       <span>
-                        基线: <span className="text-slate-600">{formatMetricValue(alert.metric, alert.baselineValue)}</span>
+                        基线: <span className="text-slate-400">{formatMetricValue(alert.metric, alert.baselineValue)}</span>
                       </span>
                       <span
                         className={`font-semibold ${
-                          alert.deviationPercent > 0 ? 'text-emerald-600' : 'text-red-600'
+                          alert.deviationPercent > 0 ? 'text-emerald-400' : 'text-red-400'
                         }`}
                       >
                         {alert.deviationPercent > 0 ? '+' : ''}

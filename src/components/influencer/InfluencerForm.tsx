@@ -64,34 +64,34 @@ export default function InfluencerForm({ editingId, onClose }: Props) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={onClose}>
       <div
-        className="bg-white rounded-2xl shadow-xl w-full max-w-lg mx-4 max-h-[85vh] overflow-y-auto"
+        className="glass-card rounded-2xl shadow-xl w-full max-w-lg mx-4 max-h-[85vh] overflow-y-auto"
         onClick={e => e.stopPropagation()}
       >
-        <div className="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
-          <h3 className="text-lg font-bold text-slate-800">
+        <div className="px-6 py-5 border-b border-white/5 flex items-center justify-between">
+          <h3 className="text-lg font-bold text-slate-200">
             {editingId ? '编辑达人' : '添加达人'}
           </h3>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 text-xl leading-none">&times;</button>
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-400 text-xl leading-none">&times;</button>
         </div>
 
         <div className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-600 mb-1">姓名 *</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1">姓名 *</label>
             <input
               value={form.name}
               onChange={e => set('name', e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               placeholder="达人姓名"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-slate-600 mb-1">平台</label>
+              <label className="block text-sm font-medium text-slate-400 mb-1">平台</label>
               <select
                 value={form.platform}
                 onChange={e => set('platform', e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               >
                 <option>TikTok</option>
                 <option>Instagram</option>
@@ -103,52 +103,52 @@ export default function InfluencerForm({ editingId, onClose }: Props) {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-600 mb-1">账号</label>
+              <label className="block text-sm font-medium text-slate-400 mb-1">账号</label>
               <input
                 value={form.handle}
                 onChange={e => set('handle', e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                 placeholder="@username"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-600 mb-1">粉丝量</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1">粉丝量</label>
             <input
               type="number"
               value={form.followers || ''}
               onChange={e => set('followers', Number(e.target.value))}
-              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-600 mb-1">品类标签（逗号分隔）</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1">品类标签（逗号分隔）</label>
             <input
               value={catInput}
               onChange={e => setCatInput(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               placeholder="美妆, 服饰, 3C"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-600 mb-1">联系方式</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1">联系方式</label>
             <input
               value={form.contactInfo}
               onChange={e => set('contactInfo', e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               placeholder="微信/邮箱/电话"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-600 mb-1">合作状态</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1">合作状态</label>
             <select
               value={form.status}
               onChange={e => set('status', e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             >
               {PIPELINE_STAGES.map(s => (
                 <option key={s} value={s}>{PIPELINE_LABELS[s as PipelineStage]}</option>
@@ -157,26 +157,26 @@ export default function InfluencerForm({ editingId, onClose }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-600 mb-1">备注</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1">备注</label>
             <textarea
               value={form.notes}
               onChange={e => set('notes', e.target.value)}
               rows={3}
-              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             />
           </div>
         </div>
 
-        <div className="px-6 py-4 border-t border-slate-100 flex justify-end gap-3">
+        <div className="px-6 py-4 border-t border-white/5 flex justify-end gap-3">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+            className="px-4 py-2 text-sm font-medium text-slate-400 hover:bg-white/5 rounded-lg transition-colors"
           >
             取消
           </button>
           <button
             onClick={handleSave}
-            className="px-6 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors"
+            className="px-6 py-2 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition-colors"
           >
             {editingId ? '保存修改' : '添加'}
           </button>

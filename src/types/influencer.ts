@@ -23,14 +23,14 @@ export const PIPELINE_LABELS: Record<PipelineStage, string> = {
 };
 
 export const PIPELINE_COLORS: Record<PipelineStage, string> = {
-  pending: 'bg-slate-100 text-slate-600',
-  contacted: 'bg-blue-100 text-blue-700',
-  negotiating: 'bg-amber-100 text-amber-700',
-  confirmed: 'bg-emerald-100 text-emerald-700',
-  sample_sent: 'bg-indigo-100 text-indigo-700',
-  content_received: 'bg-violet-100 text-violet-700',
-  published: 'bg-cyan-100 text-cyan-700',
-  settled: 'bg-green-100 text-green-700',
+  pending: 'bg-slate-500/15 text-slate-400',
+  contacted: 'bg-blue-500/15 text-blue-300',
+  negotiating: 'bg-amber-500/15 text-amber-300',
+  confirmed: 'bg-emerald-500/15 text-emerald-300',
+  sample_sent: 'bg-indigo-500/15 text-indigo-300',
+  content_received: 'bg-violet-500/15 text-violet-300',
+  published: 'bg-cyan-500/15 text-cyan-300',
+  settled: 'bg-green-500/15 text-green-300',
 };
 
 export interface Influencer {
@@ -57,10 +57,10 @@ export const TRACKING_LABELS: Record<TrackingStatus, string> = {
 };
 
 export const TRACKING_COLORS: Record<TrackingStatus, string> = {
-  pending: 'bg-slate-100 text-slate-600',
-  in_transit: 'bg-blue-100 text-blue-700',
-  delivered: 'bg-emerald-100 text-emerald-700',
-  exception: 'bg-red-100 text-red-700',
+  pending: 'bg-slate-500/15 text-slate-400',
+  in_transit: 'bg-blue-500/15 text-blue-300',
+  delivered: 'bg-emerald-500/15 text-emerald-300',
+  exception: 'bg-red-500/15 text-red-300',
 };
 
 export interface Shipment {

@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { TrendingUp, TrendingDown } from 'lucide-react';
 import type { DailyRow } from '../../types';
 import { formatCurrency } from '../../utils/formatters';
 
@@ -65,42 +66,44 @@ export default function DailyAnomalyPanel({ dailyData }: DailyAnomalyPanelProps)
 
   if (anomalies.length === 0) {
     return (
-      <div className="bg-white rounded-xl border border-slate-200 p-5">
-        <h3 className="text-base font-semibold text-slate-700 mb-3">日度异常检测</h3>
+      <div className="glass-card rounded-xl p-5">
+        <h3 className="text-base font-semibold text-slate-400 mb-3">日度异常检测</h3>
         <p className="text-sm text-slate-400 text-center py-8">本周期日度数据平稳，未检测到显著异常</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-5">
-      <h3 className="text-base font-semibold text-slate-700 mb-4">日度异常检测</h3>
+    <div className="glass-card rounded-xl p-5">
+      <h3 className="text-base font-semibold text-slate-400 mb-4">日度异常检测</h3>
       <div className="space-y-2">
         {anomalies.map((a) => (
           <div
             key={a.date}
             className={`flex items-start gap-3 p-3 rounded-lg text-sm ${
               a.level === 'spike'
-                ? 'bg-emerald-50 border border-emerald-200'
-                : 'bg-red-50 border border-red-200'
+                ? 'bg-emerald-500/10 border border-emerald-500/20'
+                : 'bg-red-500/10 border border-red-500/20'
             }`}
           >
-            <span className={`text-lg shrink-0 ${a.level === 'spike' ? '' : ''}`}>
-              {a.level === 'spike' ? '📈' : '📉'}
-            </span>
+            {a.level === 'spike' ? (
+              <TrendingUp size={18} strokeWidth={2} className="text-emerald-400 shrink-0" />
+            ) : (
+              <TrendingDown size={18} strokeWidth={2} className="text-red-400 shrink-0" />
+            )}
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
-                <span className="font-medium text-slate-800">{a.date}</span>
-                <span className={`font-semibold ${a.level === 'spike' ? 'text-emerald-700' : 'text-red-600'}`}>
+                <span className="font-medium text-slate-200">{a.date}</span>
+                <span className={`font-semibold ${a.level === 'spike' ? 'text-emerald-300' : 'text-red-400'}`}>
                   {formatCurrency(a.gmv)}
                 </span>
                 <span className={`text-xs px-1.5 py-0.5 rounded-full ${
-                  a.level === 'spike' ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'
+                  a.level === 'spike' ? 'bg-emerald-500/20 text-emerald-300' : 'bg-red-500/15 text-red-300'
                 }`}>
                   {a.level === 'spike' ? '暴涨' : '骤降'}
                 </span>
               </div>
-              <p className="text-slate-600">{a.reason}</p>
+              <p className="text-slate-400">{a.reason}</p>
             </div>
           </div>
         ))}

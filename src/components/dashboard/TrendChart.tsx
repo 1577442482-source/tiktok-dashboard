@@ -21,13 +21,13 @@ export default function TrendChart({ periods, metricKey, title }: TrendChartProp
   const isCurrency = metricKey === 'gmv';
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-5">
-      <h3 className="text-base font-semibold text-slate-700 mb-4">{title}</h3>
+    <div className="glass-card rounded-xl p-5">
+      <h3 className="text-base font-semibold text-slate-400 mb-4">{title}</h3>
       <ResponsiveContainer width="100%" height={200}>
         <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
-          <XAxis dataKey="label" tick={{ fontSize: 12 }} stroke="#94a3b8" />
-          <YAxis tick={{ fontSize: 12 }} stroke="#94a3b8" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+          <XAxis dataKey="label" tick={{ fontSize: 12 }} stroke="#64748b" />
+          <YAxis tick={{ fontSize: 12 }} stroke="#64748b" />
           <Tooltip
             formatter={(value: unknown) => {
               const v = Number(value);
@@ -37,9 +37,9 @@ export default function TrendChart({ periods, metricKey, title }: TrendChartProp
           <Line
             type="monotone"
             dataKey="value"
-            stroke="#6366f1"
+            stroke="#10b981"
             strokeWidth={2}
-            dot={{ fill: '#6366f1', r: 4 }}
+            dot={{ fill: '#10b981', r: 4 }}
             activeDot={{ r: 6 }}
           />
         </LineChart>
