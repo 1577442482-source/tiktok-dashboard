@@ -50,7 +50,7 @@ export default function SourceChart({ period }: SourceChartProps) {
             ))}
           </Pie>
           <Tooltip formatter={(value: unknown) => [formatCurrency(Number(value)), '']} />
-          <Legend />
+          <Legend wrapperStyle={{ color: '#e8edf2' }} />
         </PieChart>
       </ResponsiveContainer>
     </div>

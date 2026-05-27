@@ -34,7 +34,7 @@ export default function KpiCard({
             {title}
           </span>
           <div className="p-2 rounded-lg bg-white/[0.03] group-hover:bg-emerald-500/10 transition-colors duration-300">
-            <Icon size={18} strokeWidth={1.75} className="text-slate-500 group-hover:text-emerald-400 transition-colors duration-300" />
+            <Icon size={18} strokeWidth={1.75} className="text-slate-400 group-hover:text-emerald-400 transition-colors duration-300" />
           </div>
         </div>
 
@@ -65,7 +65,7 @@ export default function KpiCard({
               </span>
             )}
             {!isPositive && !isNegative && <span className="text-slate-400">-</span>}
-            {changeLabel && <span className="text-slate-500 ml-1">{changeLabel}</span>}
+            {changeLabel && <span className="text-slate-400 ml-1">{changeLabel}</span>}
           </div>
         ) : (
           <div className="text-sm text-slate-400">累计</div>

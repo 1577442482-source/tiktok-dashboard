@@ -25,13 +25,16 @@ export default function DailySourceBreakdown({ dailyData }: DailySourceBreakdown
           <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
           <XAxis
             dataKey="date"
-            tick={{ fontSize: 11 }}
+            tick={{ fontSize: 11, fill: '#94a3b8' }}
             stroke="#64748b"
             interval={Math.floor(chartData.length / 8)}
           />
-          <YAxis tick={{ fontSize: 11 }} stroke="#64748b" />
-          <Tooltip formatter={(value: unknown) => [formatCurrency(Number(value)), '']} />
-          <Legend />
+          <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} stroke="#64748b" />
+          <Tooltip
+            contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px', color: '#e2e8f0' }}
+            formatter={(value: unknown) => [formatCurrency(Number(value)), '']}
+          />
+          <Legend wrapperStyle={{ color: '#e8edf2' }} />
           <Area
             type="monotone"
             dataKey="商品卡"

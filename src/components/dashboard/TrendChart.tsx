@@ -26,9 +26,10 @@ export default function TrendChart({ periods, metricKey, title }: TrendChartProp
       <ResponsiveContainer width="100%" height={200}>
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-          <XAxis dataKey="label" tick={{ fontSize: 12 }} stroke="#64748b" />
-          <YAxis tick={{ fontSize: 12 }} stroke="#64748b" />
+          <XAxis dataKey="label" tick={{ fontSize: 12, fill: '#94a3b8' }} stroke="#64748b" />
+          <YAxis tick={{ fontSize: 12, fill: '#94a3b8' }} stroke="#64748b" />
           <Tooltip
+            contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px', color: '#e2e8f0' }}
             formatter={(value: unknown) => {
               const v = Number(value);
               return [isCurrency ? formatCurrency(v) : formatNumber(v), title];

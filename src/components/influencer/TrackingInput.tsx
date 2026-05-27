@@ -123,7 +123,7 @@ export default function TrackingInput({ onClose }: Props) {
             <select
               value={influencerId}
               onChange={e => setInfluencerId(e.target.value)}
-              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             >
               <option value="">-- 请选择 --</option>
               {influencers.map(inf => (
@@ -137,7 +137,7 @@ export default function TrackingInput({ onClose }: Props) {
             <input
               value={productName}
               onChange={e => setProductName(e.target.value)}
-              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               placeholder="如：美妆样品包"
             />
           </div>
@@ -147,7 +147,7 @@ export default function TrackingInput({ onClose }: Props) {
             <input
               value={trackingNumber}
               onChange={e => handleTrackingChange(e.target.value)}
-              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               placeholder="输入单号自动识别快递公司"
             />
             {detectLabel && (
@@ -162,7 +162,7 @@ export default function TrackingInput({ onClose }: Props) {
             <select
               value={carrier}
               onChange={e => { setCarrier(e.target.value); setAutoDetected(false); }}
-              className={`w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-colors ${autoDetected ? 'border-emerald-300 bg-emerald-500/10' : 'border-white/5'}`}
+              className={`w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-colors bg-white/5 text-slate-200 ${autoDetected ? 'border-emerald-300 bg-emerald-500/10' : 'border-white/5'}`}
             >
               {CARRIERS.map(c => (
                 <option key={c.code} value={c.code}>{c.name}</option>

@@ -34,7 +34,7 @@ export default function CtrCvrTrend({ data, title }: CtrCvrTrendProps) {
             <Tooltip
               formatter={(value: unknown) => [`${Number(value).toFixed(2)}%`, '']}
             />
-            <Legend />
+            <Legend wrapperStyle={{ color: '#e8edf2' }} />
             <Bar
               yAxisId="left"
               dataKey="CTR"

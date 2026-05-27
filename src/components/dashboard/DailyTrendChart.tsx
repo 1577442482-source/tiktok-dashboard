@@ -54,9 +54,10 @@ export default function DailyTrendChart({ dailyData, title }: DailyTrendChartPro
       <ResponsiveContainer width="100%" height={280}>
         <ComposedChart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-          <XAxis dataKey="date" tick={{ fontSize: 11 }} stroke="#64748b" interval={Math.floor(chartData.length / 10)} />
-          <YAxis tick={{ fontSize: 11 }} stroke="#64748b" />
+          <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#94a3b8' }} stroke="#64748b" interval={Math.floor(chartData.length / 10)} />
+          <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} stroke="#64748b" />
           <Tooltip
+            contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px', color: '#e2e8f0' }}
             formatter={(value: unknown) => {
               const v = Number(value);
               return [active.isCurrency ? formatCurrency(v) : formatNumber(v), active.label];

@@ -80,7 +80,7 @@ export default function InfluencerForm({ editingId, onClose }: Props) {
             <input
               value={form.name}
               onChange={e => set('name', e.target.value)}
-              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               placeholder="达人姓名"
             />
           </div>
@@ -91,7 +91,7 @@ export default function InfluencerForm({ editingId, onClose }: Props) {
               <select
                 value={form.platform}
                 onChange={e => set('platform', e.target.value)}
-                className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               >
                 <option>TikTok</option>
                 <option>Instagram</option>
@@ -107,7 +107,7 @@ export default function InfluencerForm({ editingId, onClose }: Props) {
               <input
                 value={form.handle}
                 onChange={e => set('handle', e.target.value)}
-                className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                 placeholder="@username"
               />
             </div>
@@ -119,7 +119,7 @@ export default function InfluencerForm({ editingId, onClose }: Props) {
               type="number"
               value={form.followers || ''}
               onChange={e => set('followers', Number(e.target.value))}
-              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             />
           </div>
 
@@ -128,7 +128,7 @@ export default function InfluencerForm({ editingId, onClose }: Props) {
             <input
               value={catInput}
               onChange={e => setCatInput(e.target.value)}
-              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               placeholder="美妆, 服饰, 3C"
             />
           </div>
@@ -138,7 +138,7 @@ export default function InfluencerForm({ editingId, onClose }: Props) {
             <input
               value={form.contactInfo}
               onChange={e => set('contactInfo', e.target.value)}
-              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               placeholder="微信/邮箱/电话"
             />
           </div>
@@ -148,7 +148,7 @@ export default function InfluencerForm({ editingId, onClose }: Props) {
             <select
               value={form.status}
               onChange={e => set('status', e.target.value)}
-              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             >
               {PIPELINE_STAGES.map(s => (
                 <option key={s} value={s}>{PIPELINE_LABELS[s as PipelineStage]}</option>
@@ -162,7 +162,7 @@ export default function InfluencerForm({ editingId, onClose }: Props) {
               value={form.notes}
               onChange={e => set('notes', e.target.value)}
               rows={3}
-              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+              className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             />
           </div>
         </div>

@@ -161,6 +161,7 @@ export default function AfterSalesPage() {
                         }}
                       />
                       <Legend
+                        wrapperStyle={{ color: '#e8edf2' }}
                         formatter={(value: string) =>
                           value.length > 18 ? value.substring(0, 18) + '...' : value
                         }
@@ -197,7 +198,7 @@ export default function AfterSalesPage() {
                           return [`${value} 单 (${pct}%)`, name as string];
                         }}
                       />
-                      <Legend />
+                      <Legend wrapperStyle={{ color: '#e8edf2' }} />
                     </PieChart>
                   </ResponsiveContainer>
                 ) : (

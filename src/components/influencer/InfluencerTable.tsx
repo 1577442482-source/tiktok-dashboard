@@ -37,12 +37,12 @@ export default function InfluencerTable() {
           value={search}
           onChange={e => setSearch(e.target.value)}
           placeholder="搜索姓名 / 账号 / 品类..."
-          className="flex-1 px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-shadow"
+          className="flex-1 px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-shadow"
         />
         <select
           value={statusFilter}
           onChange={e => setStatusFilter(e.target.value)}
-          className="px-3 py-2 border border-white/5 rounded-lg text-sm bg-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+          className="px-3 py-2 border border-white/5 rounded-lg text-sm bg-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
         >
           <option value="all">全部状态</option>
           {Object.entries(PIPELINE_LABELS).map(([k, v]) => (

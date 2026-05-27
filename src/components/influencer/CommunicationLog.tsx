@@ -73,7 +73,7 @@ export default function CommunicationLog() {
                 <select
                   value={method}
                   onChange={e => setMethod(e.target.value)}
-                  className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                  className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                 >
                   {CONTACT_METHODS.map(m => <option key={m} value={m}>{m}</option>)}
                 </select>
@@ -84,7 +84,7 @@ export default function CommunicationLog() {
                   value={content}
                   onChange={e => setContent(e.target.value)}
                   rows={4}
-                  className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                  className="w-full px-3 py-2 border border-white/5 rounded-lg text-sm bg-white/5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                   placeholder="记录沟通内容..."
                 />
               </div>

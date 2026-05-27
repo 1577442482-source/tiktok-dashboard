@@ -450,7 +450,7 @@ html {
 }
 
 .recharts-text {
-  fill: #6b7d8e;
+  fill: #94a3b8;
   font-size: 12px;
   font-family: 'Geist', sans-serif;
 }
@@ -460,6 +460,15 @@ html {
   border: 1px solid rgba(16, 185, 129, 0.15) !important;
   border-radius: 8px !important;
   backdrop-filter: blur(12px);
+  color: #e2e8f0 !important;
+}
+
+.recharts-tooltip-label {
+  color: #94a3b8 !important;
+}
+
+.recharts-tooltip-item {
+  color: #e2e8f0 !important;
 }
 
 /* ====== Reduced Motion ====== */
